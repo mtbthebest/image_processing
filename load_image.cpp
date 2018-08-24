@@ -2,10 +2,9 @@
 // Created by mtb on 18/08/19.
 //
 
-
+#include <iostream>
 #include<opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <iostream>
 
 using namespace std;
 
@@ -22,6 +21,7 @@ void load_image1(){
 
     cv::namedWindow("window");
     cv::imshow("window", image);
+//    cv::waitKey(5000);
     cv::waitKey(0);
 
 }
@@ -60,24 +60,57 @@ void flip_image(){
 };
 
 void onMouse(int event,int x, int y,int flags,void *param){
-
+    cv::Mat *im = reinterpret_cast<cv::Mat*>(param);
+    switch(event){
+        case cv::EVENT_LBUTTONDOWN:
+            std::cout<<" at ("<<x <<" , "<<y<<")value is: "<< static_cast<int>(im->at<uchar>(cv::Point(x,y)));
+    }
 }
 void event_triggering(){
     cv::Mat image;
     image = cv::imread("../images/puppy.bmp");
     cv::namedWindow("window");
     cv::setMouseCallback("window",onMouse, reinterpret_cast<void*>(&image));
+    cv::imshow("window",image);
+    cv::waitKey(0);
+}
+
+void draw(){
+
+    cv::Mat image=cv::imread("../images/puppy.bmp");
+    cv::circle(image,cv::Point(100,50),25 ,cv::Scalar(255,0,0),1);
+    cv::namedWindow("window");
+    cv::imshow("window",image);
+    cv::waitKey(0);
+
+}
+
+void getRoi(){
+    cv::Mat image=cv::imread("../images/puppy.bmp");
+    cv::Mat logo =cv::imread("../images/logo.bmp");
+    cv::Mat imageROI(image, cv::Rect(image.cols - logo.cols, image.rows - logo.rows,logo.cols, logo.rows));
+
+    cv::Mat mask(logo);
+
+    logo.copyTo(imageROI, mask);
 
 
+    cv::namedWindow("window");
+    cv::imshow("window",image);
+    cv::waitKey(0);
 }
 
 
 
 int main(int argc, char const *argv[]) {
 
-//    load_image2();
-    event_triggering():
+//    load_image1();
+//    event_triggering();
+//    draw();
+    getRoi();
+
 
     return 0;
+
 }
 
