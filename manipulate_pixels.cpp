@@ -141,6 +141,29 @@ void sharpen2D() {
     cv::waitKey(0);
 }
 
+void split_merge_channels() {
+    cv::Mat image = cv::imread("../images/boldt.jpg", 1);
+
+    std::vector<cv::Mat> planes;
+
+    cv::split(image, planes);
+
+    cv::MatIterator_<uchar> it = planes[0].begin<uchar>();
+    cv::MatIterator_<uchar> itend = planes[0].end<uchar>();
+
+    for (; it != itend; ++it) {
+        (*it) = 255;
+    }
+
+    cv::merge(planes, image);
+
+
+    cv::imshow("window", image);
+
+    cv::waitKey(0);
+
+}
+
 
 
 int main(int argc, char const *argv[]) {
@@ -149,7 +172,8 @@ int main(int argc, char const *argv[]) {
 
 //    iterate_over();
 
-    sharpen();
+//    sharpen();
+    split_merge_channels();
     return 0;
 
 }
