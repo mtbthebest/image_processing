@@ -16,7 +16,7 @@ if( OpenCV_FOUND )
 endif( OpenCV_FOUND )
 
 
-set(SOURCE_FILES load_image.cpp)
+set(SOURCE_FILES manipulate_pixels.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 #add_subdirectory(images)
