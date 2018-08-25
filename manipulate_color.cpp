@@ -10,30 +10,32 @@
 
 using namespace std;
 
-void strategy_design_pattern() {
+void colorDetection() {
     ColorDetector cdetect;
     cv::Mat image = cv::imread("../images/boldt.jpg", 1);
 
-    if (!image.data);
-
-    cdetect.setTargetColor(130, 190, 230);
+    cv::imshow("image", image);
 
 
-    cv::imshow("window", cdetect.process(image));
+    cdetect.setTargetColor(230, 190, 130);
+
+    cv::Mat result = cdetect.process(image);
+    cv::imshow("result", result);
+
+    ColorDetector colordetector(230, 190, 130, 45, true);
+    result = colordetector(image);
+    cv::imshow("colordetector", image);
+
+
+
+
     cv::waitKey(0);
 }
 
-void strategy_design_pattern2() {
-    ColorDetector cdetect;
-    cv::Mat image = cv::imread("../images/boldt.jpg", 1);
-
-    cv::imshow("window", cdetect.process(image));
-    cv::waitKey(0);
-}
 
 
 int main(int argc, char const *argv[]) {
-    strategy_design_pattern();
+    colorDetection();
     return 0;
 
 }
