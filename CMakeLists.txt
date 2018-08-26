@@ -16,7 +16,8 @@ if( OpenCV_FOUND )
 endif( OpenCV_FOUND )
 
 
-set(SOURCE_FILES manipulate_color.cpp colordetector.cpp)
+#set(SOURCE_FILES manipulate_color.cpp colordetector.cpp)
+set(SOURCE_FILES huesaturation.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 #add_subdirectory(images)

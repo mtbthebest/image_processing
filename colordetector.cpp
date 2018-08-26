@@ -23,10 +23,11 @@ cv::Mat ColorDetector::process(const cv::Mat &image) {
 
     for (; it != itend; ++it, ++itout) {
         if (getDistanceToTargetColor(*it) < maxDist) {
-            *itout = 255;
-        } else {
-            *itout = 0;
-        }
+            if (getDistanceToTargetColor(*it) < maxDist) {
+                *itout = 255;
+            } else {
+                *itout = 0;
+            }
 
 
     }
