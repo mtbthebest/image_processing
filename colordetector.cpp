@@ -30,6 +30,7 @@ cv::Mat ColorDetector::process(const cv::Mat &image) {
             }
 
 
+        }
     }
     return result;
 

@@ -20,12 +20,17 @@ int main(int argc, char *argv[]) {
     Histogram1D h;
     cv::Mat histo = h.getHistogram(image);
 
-    for (int i = 0; i < 256; ++i) {
-        std::cout<<"Value: "<<i<<" = "<<histo.at<float>(i)<<endl;
-    }
+
+
+//    std::cout<<"size: "<<histo.size();
+
+
+//    for (int i = 0; i < 256; ++i) {
+//        std::cout<<"Value: "<<i<<" = "<<histo.at<float>(i)<<endl;
+//    }
 
     cv::imshow("Histogram", h.getHistogramImage(image));
-
+//
     cv::Mat hi = h.getHistogramImage(image);
     cv::line(hi,cv::Point(70,0), cv::Point(70,255),cv::Scalar(128));
     cv::imshow("histogram with threshold", hi);

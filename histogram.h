@@ -8,7 +8,7 @@
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
-
+using namespace std;
 class Histogram1D{
 private:
     int histSize[1];
@@ -63,6 +63,8 @@ public:
         double minVal = 0;
         cv::minMaxLoc(hist,&minVal,&maxVal,0,0);
 
+//        std::cout<<minVal ;
+
         int histSize = hist.rows;
 
         cv::Mat histImg(histSize*zoom,histSize*zoom,CV_8U,cv::Scalar(255));
@@ -92,7 +94,7 @@ public:
         cv::Mat hist = getHistogram(image);
 
         int imin = 0;
-        for (float count = 00.0; imin<256 ; imin++) {
+        for (float count = 0.0; imin<256 ; imin++) {
             if ((count+=hist.at<float>(imin))>=number)
                 break;
         }

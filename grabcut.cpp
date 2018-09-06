@@ -20,6 +20,7 @@ int main(int argc, char const *argv[]) {
     cv::Mat result;
     cv::Mat bgModel, fgModel;
 
+
     cv::grabCut(image, result, rectangle, bgModel, fgModel, 30, cv::GC_INIT_WITH_RECT);
 
     cv::compare(result, cv::GC_PR_FGD, result, cv::CMP_EQ);
@@ -31,7 +32,7 @@ int main(int argc, char const *argv[]) {
 
 
 //    cv::imshow("window",image);
-//    cv::imshow("window",result);
+    cv::imshow("result",result);
     cv::imshow("window", image);
     cv::imshow("foreground", foreground);
     cv::waitKey(0);

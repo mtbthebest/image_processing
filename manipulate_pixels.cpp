@@ -109,8 +109,6 @@ void sharpen() {
         for (int i = nchannels; i < (image.cols - 1) * nchannels; i++) {
             *output++=cv::saturate_cast<uchar>(5*current[i] -current[i-nchannels]-
                     current[i+nchannels] -previous[i]-next[i]);
-
-
         }
     }
     result.row(0).setTo(cv::Scalar(0));

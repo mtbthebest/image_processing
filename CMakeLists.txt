@@ -15,10 +15,16 @@ if( OpenCV_FOUND )
     include_directories( ${OpenCV_INCLUDE_DIRS} )
 endif( OpenCV_FOUND )
 
-
+#set(SOURCE_FILES load_image.cpp)
+#set(SOURCE_FILES manipulate_pixels.cpp)
 #set(SOURCE_FILES manipulate_color.cpp colordetector.cpp)
 #set(SOURCE_FILES huesaturation.cpp)
-set(SOURCE_FILES histogram.cpp)
+#set(SOURCE_FILES grabcut.cpp)
+#set(SOURCE_FILES histogram.cpp)
+#set(SOURCE_FILES contentFinder.cpp )
+#set(SOURCE_FILES finder.cpp)
+set(SOURCE_FILES retrieve.cpp imageComparator.h)
+
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 #add_subdirectory(images)
